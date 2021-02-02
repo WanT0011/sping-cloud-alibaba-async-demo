@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>spring-cloud-dubbo-sample-api</module>
+        <module>spring-cloud-dubbo-provider-web-sample</module>
+        <module>spring-cloud-dubbo-consumer</module>
+    </modules>
+
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>2.3.2.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
+
+
+    <groupId>com.want</groupId>
+    <artifactId>sping-cloud-alibaba-async-demo</artifactId>
+    <version>1.0-SNAPSHOT</version>
+
+
+    <properties>
+        <java.version>1.8</java.version>
+        <seata-spring-boot-starter>1.4.0</seata-spring-boot-starter>
+        <nacos-client>1.3.1</nacos-client>
+        <spring-cloud.version>Hoxton.SR8</spring-cloud.version>
+        <spring-cloud-alibaba.version>2.2.3.RELEASE</spring-cloud-alibaba.version>
+        <mybatis-spring-boot-starter.version>2.1.3</mybatis-spring-boot-starter.version>
+        <spring-cloud-starter-alibaba-seata>2.2.1.RELEASE</spring-cloud-starter-alibaba-seata>
+        <druid-spring-boot-starter.version>1.2.3</druid-spring-boot-starter.version>
+        <spring-boot-admin-starter.version>2.3.1</spring-boot-admin-starter.version>
+        <springfox-boot-starter.version>3.0.0</springfox-boot-starter.version>
+        <seata-spring-boot-starter>1.4.0</seata-spring-boot-starter>
+        <pagehelper-spring-boot-starter.version>1.3.0</pagehelper-spring-boot-starter.version>
+        <lombok.version>1.18.16</lombok.version>
+        <guava.version>30.0-jre</guava.version>
+        <poi-ooxml.version>4.1.2</poi-ooxml.version>
+        <elasticsearch.version>6.6.0</elasticsearch.version>
+        <fastjson.version>1.2.75</fastjson.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
+        <commons-lang3.version>3.11</commons-lang3.version>
+        <commons-io.version>2.8.0</commons-io.version>
+        <ons-client.version>1.8.0.Final</ons-client.version>
+        <protobuf-java.version>3.12.2</protobuf-java.version>
+        <loghub-client-lib.version>0.6.29</loghub-client-lib.version>
+        <jodd-util.version>6.0.0</jodd-util.version>
+        <jodd-mail.version>6.0.3</jodd-mail.version>
+        <jodd-json.version>6.0.2</jodd-json.version>
+        <jodd-lagarto.version>6.0.2</jodd-lagarto.version>
+        <aliyun-log.version>0.6.50</aliyun-log.version>
+        <aliyun-log-producer.version>0.3.5</aliyun-log-producer.version>
+        <jsoup.version>1.13.1</jsoup.version>
+        <alihbase.version>2.8.0</alihbase.version>
+        <prometheus.version>1.6.1</prometheus.version>
+        <mapstruct.version>1.4.1.Final</mapstruct.version>
+        <gson.version>2.8.6</gson.version>
+        <mssql-jdbc.version>8.2.2.jre8</mssql-jdbc.version>
+        <hutool.version>5.4.7</hutool.version>
+    </properties>
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata-spring-boot-starter}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.nacos</groupId>
+                <artifactId>nacos-client</artifactId>
+                <version>${nacos-client}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-dependencies</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <!-- bcl 开始 -->
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-all</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-core</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-web</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-modules</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-alilog</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-api</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-base</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-cache</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-context</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-database</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-dtx</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-elasticsearch</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-elasticsearch-api</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-exception</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-hbase</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-hbase-api</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-mq</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-mvc</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-queue</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-redis</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-rest</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-scheduler</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-security-xss</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-sleuth</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-task</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-metrics</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.xkw.bcl</groupId>
+                <artifactId>bcl-xxl-job-scheduler</artifactId>
+                <version>1.6.0-SNAPSHOT</version>
+            </dependency>
+            <!-- bcl 结束 -->
+
+            <!--短期任务的修改日志api 开始-->
+            <!--            <dependency>-->
+            <!--                <groupId>com.xkw.dsp</groupId>-->
+            <!--                <artifactId>dsp-scheduler-admin-api</artifactId>-->
+            <!--                <version>1.6.0-SNAPSHOT</version>-->
+            <!--            </dependency>-->
+            <!--短期任务的修改日志api 结束-->
+
+            <!-- spring cloud -->
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- spring boot admin  -->
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-server</artifactId>
+                <version>${spring-boot-admin-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>de.codecentric</groupId>
+                <artifactId>spring-boot-admin-starter-client</artifactId>
+                <version>${spring-boot-admin-starter.version}</version>
+            </dependency>
+
+            <!-- swagger -->
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-boot-starter</artifactId>
+                <version>${springfox-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.projectlombok</groupId>
+                <artifactId>lombok</artifactId>
+                <version>${lombok.version}</version>
+            </dependency>
+
+            <!-- guava -->
+            <dependency>
+                <groupId>com.google.guava</groupId>
+                <artifactId>guava</artifactId>
+                <version>${guava.version}</version>
+            </dependency>
+
+            <!-- mybatis -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${mybatis-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!--数据源-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid-spring-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.microsoft.sqlserver</groupId>
+                <artifactId>mssql-jdbc</artifactId>
+                <version>${mssql-jdbc.version}</version>
+            </dependency>
+
+            <!-- elasticsearch -->
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>elasticsearch-rest-high-level-client</artifactId>
+                <version>${elasticsearch.version}</version>
+            </dependency>
+
+            <!-- poi-ooxml:excel处理 -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi-ooxml.version}</version>
+            </dependency>
+
+            <!-- fastjson -->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <!-- apache辅助工具 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <!-- apache集合类辅助工具 -->
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-collections4</artifactId>
+                <version>${commons-collections4.version}</version>
+            </dependency>
+
+            <!-- 阿里rocketmq消息队列 -->
+            <dependency>
+                <groupId>com.aliyun.openservices</groupId>
+                <artifactId>ons-client</artifactId>
+                <version>${ons-client.version}</version>
+            </dependency>
+
+            <!--阿里日志服务 -->
+            <dependency>
+                <groupId>com.aliyun.openservices</groupId>
+                <artifactId>aliyun-log</artifactId>
+                <version>${aliyun-log.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.aliyun.openservices</groupId>
+                <artifactId>aliyun-log-producer</artifactId>
+                <version>${aliyun-log-producer.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.protobuf</groupId>
+                <artifactId>protobuf-java</artifactId>
+                <version>${protobuf-java.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.aliyun.openservices</groupId>
+                <artifactId>loghub-client-lib</artifactId>
+                <version>${loghub-client-lib.version}</version>
+            </dependency>
+
+            <!--阿里hbase组件-->
+            <dependency>
+                <groupId>com.aliyun.hbase</groupId>
+                <artifactId>alihbase-client</artifactId>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.slf4j</groupId>
+                        <artifactId>slf4j-log4j12</artifactId>
+                    </exclusion>
+                </exclusions>
+                <version>${alihbase.version}</version>
+            </dependency>
+
+            <!--jodd组件-->
+            <dependency>
+                <groupId>org.jodd</groupId>
+                <artifactId>jodd-util</artifactId>
+                <version>${jodd-util.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jodd</groupId>
+                <artifactId>jodd-mail</artifactId>
+                <version>${jodd-mail.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jodd</groupId>
+                <artifactId>jodd-json</artifactId>
+                <version>${jodd-json.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.jodd</groupId>
+                <artifactId>jodd-lagarto</artifactId>
+                <version>${jodd-lagarto.version}</version>
+            </dependency>
+
+            <!--xss过滤-->
+            <dependency>
+                <groupId>org.jsoup</groupId>
+                <artifactId>jsoup</artifactId>
+                <version>${jsoup.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-core</artifactId>
+                <version>${prometheus.version}</version>
+            </dependency>
+
+            <!-- Micrometer Prometheus registry -->
+            <dependency>
+                <groupId>io.micrometer</groupId>
+                <artifactId>micrometer-registry-prometheus</artifactId>
+                <version>${prometheus.version}</version>
+            </dependency>
+
+            <!--分页-->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper-spring-boot-starter.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.mapstruct</groupId>
+                <artifactId>mapstruct</artifactId>
+                <version>${mapstruct.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.google.code.gson</groupId>
+                <artifactId>gson</artifactId>
+                <version>${gson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons-io.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-alibaba-dependencies</artifactId>
+                <version>${spring-cloud-alibaba.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba.cloud</groupId>
+                <artifactId>spring-cloud-starter-alibaba-seata</artifactId>
+                <version>${spring-cloud-starter-alibaba-seata}</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>io.seata</groupId>
+                        <artifactId>seata-spring-boot-starter</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
+            <dependency>
+                <groupId>io.seata</groupId>
+                <artifactId>seata-spring-boot-starter</artifactId>
+                <version>${seata-spring-boot-starter}</version>
+            </dependency>
+        </dependencies>
+
+    </dependencyManagement>
+</project>
