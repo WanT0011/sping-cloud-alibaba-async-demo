@@ -34,7 +34,11 @@ public interface UserService {
 	 */
 	User info(Integer uid);
 
-
+	/**
+	 * async获取用户的信息
+	 * @param uid
+	 * @return
+	 */
 	default CompletableFuture<User> info(Integer uid, Boolean sync){
 		return CompletableFuture.completedFuture(info(uid));
 	}

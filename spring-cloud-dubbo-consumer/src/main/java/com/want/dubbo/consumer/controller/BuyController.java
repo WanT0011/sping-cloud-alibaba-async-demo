@@ -77,10 +77,16 @@ public class BuyController {
 
         CheckRespDTO checkRespDTO = new CheckRespDTO();
 
-        CompletableFuture<CheckRespDTO> future = storeService.listById(sid, false)
-                .thenCombine(storeService.listProductById(pid, false)
+        CompletableFuture<CheckRespDTO> future =
+                // 根据商店id获取商店信息
+                storeService.listById(sid, false)
+                .thenCombine(
+                        //同时我们再去获取商品信息
+                        storeService.listProductById(pid, false)
+                        // 将获取的商店和商品结果整合
                         , (store, product) -> {
                             checkRespDTO.setPrice(product.getPrice());
+                            // 将商店和商品的 折扣 id整合
                             List<Integer> discountIds = Optional.ofNullable(store)
                                     .map(Store::getDiscountIdList)
                                     .map(list -> {
@@ -88,10 +94,15 @@ public class BuyController {
                                         return list;
                                     })
                                     .orElseGet(() -> Optional.of(product).map(Product::getDiscountIdList).orElse(null));
+                            // 返回折扣服务进行查询所有的折扣信息
                             return disCountService.listById(discountIds);
                         })
-                .thenCombine(userService.info(uid, false)
+                .thenCombine(
+                        // 查询用户信息用户
+                        userService.info(uid, false)
+                        // 折扣信息和用户信息都查询到了，进行整合
                         , (discountList, user) -> {
+                            // 选出最优折扣
                             Discount discount = Optional.ofNullable(discountList)
                                     .map(discounts -> discounts
                                             .stream()
@@ -108,6 +119,7 @@ public class BuyController {
                             // 计算金额
                             Long price = discount.getDiscount() * checkRespDTO.getPrice();
 
+                            //初始化返回值
                             checkRespDTO.setCheckPass(price < user.getMoney());
                             checkRespDTO.setDiscount(discount);
                             return checkRespDTO;
