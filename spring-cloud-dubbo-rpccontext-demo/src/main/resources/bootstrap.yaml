@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: spring-cloud-dubbo-rpccontext-demo
+  main:
+    allow-bean-definition-overriding: true
+
+
+  # default disable all
+  cloud:
+    nacos:
+      username: nacos
+      password: nacos
+      discovery:
+        enabled: false
+        register-enabled: false
+
+ribbon:
+  nacos:
+    enabled: false
+
+---
+spring:
+  profiles: nacos
+
+  cloud:
+    nacos:
+      discovery:
+        enabled: true
+        register-enabled: true
+        server-addr: 127.0.0.1:8848
+
+ribbon:
+  nacos:
+    enabled: true

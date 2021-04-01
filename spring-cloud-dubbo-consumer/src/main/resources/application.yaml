@@ -8,6 +8,8 @@ dubbo:
   consumer:
     check: false
     timeout: 5000
+  scan:
+    base-packages: com.want.dubbo.consumer.service
 
 server:
   port: 8081

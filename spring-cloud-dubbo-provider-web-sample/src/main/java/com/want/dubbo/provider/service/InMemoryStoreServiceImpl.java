@@ -4,7 +4,9 @@ import com.want.dubbo.api.domain.entity.Product;
 import com.want.dubbo.api.domain.entity.Store;
 import com.want.dubbo.api.service.StoreService;
 import com.want.dubbo.provider.util.SleepUtil;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.dubbo.config.annotation.DubboService;
+import org.apache.dubbo.rpc.RpcContext;
 import org.springframework.beans.factory.SmartInitializingSingleton;
 
 import java.util.*;
@@ -19,6 +21,7 @@ import static java.util.stream.Collectors.toList;
  * @author WangZhiJian
  * @since 2021/1/29
  */
+@Slf4j
 @DubboService(version = "1.0.0",protocol = "dubbo")
 public class InMemoryStoreServiceImpl implements StoreService, SmartInitializingSingleton {
 
@@ -36,6 +39,13 @@ public class InMemoryStoreServiceImpl implements StoreService, SmartInitializing
     @Override
     public List<Store> list() {
         SleepUtil.sleepLessOneSecond();
+        RpcContext context = RpcContext.getContext();
+
+        context.setAttachment("demo","spring-cloud-alibaba-dubbo-provider");
+
+
+        String demo = context.getAttachment("demo");
+        log.info(demo);
         return new ArrayList<>(storeRepository.values());
     }
 

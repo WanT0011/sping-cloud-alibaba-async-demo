@@ -1,0 +1,14 @@
+dubbo:
+  cloud:
+    # The subscribed services in consumer side
+    subscribed-services: 'spring-cloud-alibaba-dubbo-consumer'
+  protocols:
+    dubbo:
+      port: -1
+  consumer:
+    check: false
+    timeout: 5000
+
+server:
+  port: 8083
+
